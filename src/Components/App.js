@@ -1,7 +1,9 @@
 import "../index.css";
-import { Link } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
 import "../Media/css/all.css";
+import Home from "./Home";
+import Dashboard from "./Dashboard";
 
 function App() {
   window.onload = () => {
@@ -65,24 +67,10 @@ function App() {
           </a>
         </ul>
       </div>
-      <div className="home-container">
-        <div className="main">
-          <div className="title-container">
-            <h1>Tropical Bot</h1>
-            <p>
-              Levelup your Discord Server with the best Leveling and
-              Multi-Purpose Discord Bot! Arcane will increase server activity
-              while keeping the server squeaky clean. What are you waiting for?
-            </p>
-            <div className="main-button-container">
-              <button className="add">Add To Server</button>
-              <button className="discord">Discord Server</button>
-              <button className="dashboard">Dashboard</button>
-            </div>
-          </div>
-          <img src="/logo.png" alt="" />
-        </div>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
     </>
   );
 }

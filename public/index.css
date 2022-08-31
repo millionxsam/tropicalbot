@@ -131,12 +131,11 @@ ul {
   margin-top: 3vh;
 }
 
-.main-button-container button:first-child {
+.main-button-container a:first-child {
   margin: 0;
 }
 
 .main-button-container button {
-  margin-left: 1vw;
   padding: 0.5vh;
   padding-left: 1vh;
   padding-right: 1vh;
@@ -147,7 +146,11 @@ ul {
   cursor: pointer;
 }
 
-.main-button-container button:hover {
+.main-button-container a {
+  margin-left: 1vw;
+}
+
+.main-button-container a:hover button {
   background-color: #ff55bb9f;
 }
 
@@ -189,4 +192,67 @@ ul {
   100% {
     margin-top: 0;
   }
+}
+
+.guilds {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  margin-top: 10vh;
+  gap: 5vw;
+}
+
+.guilds div {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  align-items: center;
+  padding-bottom: 2vh;
+  border-radius: 10px;
+  cursor: pointer;
+  max-width: fit-content;
+}
+
+.guilds div h1 {
+  background-color: rgb(77, 77, 77);
+  border-radius: 10px 10px 0 0;
+  padding: 3vw;
+}
+
+.guilds div p {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-top: 2vh;
+}
+
+.guilds div img {
+  border-radius: 10px 10px 0 0;
+  height: 30vh;
+  width: 40vh;
+}
+
+.guilds div:hover {
+  color: blue;
+  background-color: rgb(43, 43, 43);
+}
+
+.guilds div.guilds-title {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  background-color: transparent;
+  width: initial;
+}
+
+.guilds div.guilds-title {
+  color: white;
+  cursor: default;
+  max-width: initial;
+}
+
+.guilds div.guilds-title h1 {
+  background-color: transparent;
+  padding: 0;
 }

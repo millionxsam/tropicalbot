@@ -1,44 +1,60 @@
-const express = require("express");
-const app = express();
-const port = 3000;
-const { Client } = require("discord.js");
-const client = new Client({
-  intents: 32767,
-  partials: ["MESSAGE", "CHANNEL", "REACTION"],
-});
+(async () => {
+  require("dotenv").config();
+  const express = require("express");
+  const app = express();
+  const port = 3000;
+  const { Client } = require("discord.js");
+  const client = new Client({
+    intents: 32767,
+    partials: ["MESSAGE", "CHANNEL", "REACTION"],
+  });
+  // const { Database } = require("quickmongo");
+  // const db = new Database(
+  //   "mongodb+srv://TropicGalxy:Drake0826@tropicalbot.mpuunsn.mongodb.net/?retryWrites=true&w=majority"
+  // );
+  // await db.connect();
 
-client.login(
-  "OTYyODU3NDMyNjk3MTc2MDk0.GZqwW1.qCSqoGbWd4xgcuxJev_E6xfGxKJBA48oBlZqCY"
-);
+  // db.on("ready", () => console.log("Connected To Database"));
 
-app.listen(port, () => {
-  console.log("👂 Listening on port 3000");
-});
+  client.login(process.env.TOKEN);
 
-app.use(express.static("public"));
+  app.listen(port, () => {
+    console.log("👂 Listening on port 3000");
+  });
 
-app.set("view engine", "html");
+  app.use(express.static("public"));
 
-app.engine("html", require("ejs").renderFile);
+  app.set("view engine", "html");
 
-app.set("views", "public");
+  app.engine("html", require("ejs").renderFile);
 
-const api = express.Router();
+  app.set("views", "public");
 
-app.use("/api", api);
+  const api = express.Router();
 
-// Pages
+  app.use("/api", api);
 
-app.get("/dashboard", (req, res) => {
-  res.render("dashboard.html");
-});
+  // Pages
 
-app.get("/dashboard/:guildId", (req, res) => {
-  res.send("hi");
-});
+  app.get("/dashboard", (req, res) => {
+    res.render("dashboard.html");
+  });
 
-// API Requests
+  app.get("/commands", (req, res) => {
+    res.render("commands.html");
+  });
 
-api.get("/guilds", (req, res) => {
-  return res.send(client.guilds.cache.map((guild) => guild));
-});
+  app.get("/dashboard/:guildId", (req, res) => {
+    res.render("guild.html");
+  });
+
+  // API Requests
+
+  api.get("/guilds", (req, res) => {
+    return res.send(client.guilds.cache.map((guild) => guild));
+  });
+
+  api.get("/guildsSize", (req, res) => {
+    return res.send(`${client.guilds.cache.size}`);
+  });
+})();

@@ -6,8 +6,8 @@
     <link rel="icon" href="/logo-clear.png" />
     <meta name="theme-color" content="#000000" />
     <link rel="stylesheet" href="./Media/css/all.css" />
-    <script src="./script.js" defer></script>
-    <link rel="stylesheet" href="./index.css" />
+    <script src="/script.js" defer></script>
+    <link rel="stylesheet" href="/index.css" />
     <meta
       name="description"
       content="Web site created using create-react-app"
@@ -33,15 +33,18 @@
         </a>
       </ul>
     </div>
-    <div class="guilds-title">
-      <h1>Servers</h1>
-      <p>Select a server to access the dashboard of.</p>
-      <p>
-        All of the servers that you have permission in to access the dashboard
-        for will show up here. (You need manage server permission)
-      </p>
-      <p data-guild-amount></p>
+    <div class="guild-dashboard">
+      <div class="guild-name">
+        <img src="" alt="" />
+        <h1></h1>
+      </div>
+      <div class="dashboard">
+        <div>
+          <label for="prefix-input">Custom Prefix</label>
+          <input placeholder='Default: "T"' type="text" id="prefix-input" />
+          <button>Done</button>
+        </div>
+      </div>
     </div>
-    <div class="guilds"></div>
   </body>
 </html>
